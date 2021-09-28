@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
     def show 
         restaurant = Restaurant.find_by(id: params[:id])
         if restaurant
-            render json: restaurant, include: :pizzas
+            render json: restaurant.to_json(include: :pizzas)
         else
             render json: { error: "Restaurant not found" }, status: :not_found
         end
